@@ -1,0 +1,41 @@
+---
+layout: default
+---
+<article class="main-content" style="min-height: 90vh;">
+    <h1>Prompts</h1>
+    <h2>Current Prompt</h2>
+    <blockquote id="p_current"></blockquote>
+
+    <h2>Previous Prompts</h2>
+    <div id="p_previous"></div>
+</article>
+
+<script defer>
+fetch("./../meta/prompts.json")
+.then((response) => response.json())
+.then((prompts) => {
+    current.index = getIndex(prompts, current.date)
+    current.prompt = prompts[current.index][1]
+    
+    promptCurrent = document.getElementById("p_current")
+    promptCurrent.innerHTML = `
+        <a href="./../entries/?${prompts[current.index][0]}">
+            ${current.prompt}
+            <span>${current.dateTxt}</span>
+        </a>
+    ` 
+
+    promptPrevious = document.getElementById("p_previous")
+    result = document.createElement('ul')
+    for (i = current.index-1; i > -1; i--) {
+        itemWrap = document.createElement('a')
+        itemWrap.href = `./../entries/?${prompts[i][0]}`
+
+        item = document.createElement('li')
+        item.innerHTML = `<span>20${prompts[i][0]} » </span> ${prompts[i][1]}`
+        itemWrap.append(item)
+        result.append(itemWrap)
+	}
+    promptPrevious.append(result)
+})
+</script>

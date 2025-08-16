@@ -306,6 +306,21 @@ height: 100%;
 
 .m-wrapper a:hover { color: var(--accent-color); }
 
+#p_previous span {
+    font-weight: bolder;
+    font-family: var(--display-font);
+}
+#p_previous li {
+    transition: 0.2s padding;
+    margin-bottom: 0.5rem;
+    border-left: 3px solid #0000;
+}
+#p_previous li:hover {
+    list-style: none;
+    border-left: 3px solid var(--accent-color);
+    padding: 1.5rem 1rem;
+}
+
 #container { position: relative; }
 
 header {
@@ -377,7 +392,7 @@ main > article.main-content {
     border-bottom: none;
     border-top: none;
 
-    &:last-child { padding-bottom: 4rem; }
+    &:last-of-type { padding-bottom: 4rem; }
 }
 
 main > section.main-content {
