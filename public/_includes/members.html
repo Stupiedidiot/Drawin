@@ -1,0 +1,25 @@
+{%- if include.reverse == true -%}
+    {% assign members = site.data.members | reverse %}
+{%- else-%}
+    {% assign members = site.data.members %}
+{%- endif -%}
+
+{%- if include.max -%}
+    {% assign max = include.max %}
+{%- else-%}
+    {% assign max = site.data.members.size %}
+{%- endif -%}
+
+<section id="m_widget">
+{% for item in members limit:max %}
+    <div class="m-wrapper">
+        {%- if item.pfp -%}
+            <img src="{{ item.pfp }}" alt="member pfp">
+            {%- else -%}
+            <img src="/img/pfp.png" alt="member pfp">
+        {%- endif -%}
+        <h2>{{ item.name }}</h2>
+        <a href="{{ item.link }}">View Website »</a>
+    </div>
+{% endfor %}
+</section>
