@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../meta/main.css">
+    <title>Members | Drawin</title>
+</head>
+<body>
+
+    <article class="main-content" style="min-height: 90vh;">
+        <h1>Members <span id="m_counter" style="color: black;"></span></h1>
+        <section id="m_widget"></section>
+    </article>
+
+<script src="./../meta/main.js"></script>
+<script>
+fetch("./members.json")
+.then((response) => response.json())
+.then((members) => {
+  target = document.getElementById('m_widget')
+  for(i=0; i < members.length ;i++){
+    item = document.createElement('div')
+    item.className = "m-wrapper"
+
+    pfp = document.createElement('img')
+    if (members[i].pfp) {
+      pfp.src = members[i].pfp
+    } else {
+      pfp.src = './../img/pfp.png'
+    }
+
+    username = document.createElement('h2')
+    username.innerHTML = members[i].name
+
+    link = document.createElement('a')
+    link.href = members[i].link
+    link.innerHTML = 'View Website »'
+
+    item.append(pfp)
+    item.append(username)
+    item.append(link)
+    target.append(item)
+  }
+
+  document.getElementById('m_counter').innerHTML = `(${members.length})`
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./meta/main.css">
+    <title>Drawin | Digital Art Club</title>
+</head>
+<body>
+    <noscript>
+        <h1>Attention!</h1>
+        <p>This website heavily utilized javascript to automatically perform tasks. If you wish to view the prompts without js, click <a href="./prompts/list.txt">here</a></p>
+    </noscript>
+
+    <section class="main-content">
+      <div style="top: 50%; left: 2rem; max-height: 25vh; max-width: 80%; transform: translateY(-50%);">
+        <img src="./img/drawin.png" alt="" style="height: 100%;">
+      </div>
+      <img src="./img/header.png" alt="" style="object-position: 100% 7%;">
+    </section>
+
+    <article class="main-content">
+        <img src="./img/hug.png" alt="" class="float-right" style="max-width:200px;">
+        <h1>What is Drawin?</h1>
+        <p>Drawin is a digital art club that gives out monthly prompts that members will interpret through their illustrations. The given prompts are typically short phrases or figure of speeches. This club aims to encourage people to have fun and make some neat art!</p>
+    </article>
+
+    <article class="main-content">
+        <h2>Current Prompt</h2>
+        <blockquote id="p_current"></blockquote>
+        
+        <h2>Most Recent Members</h2>
+        <section id="m_widget"></section>
+        <a href="./members/index.html">View More »</a>
+    </article>
+
+    <article class="main-content">
+        <h2>Website Status!!</h2>
+        <p>This website was last updated <span id="lastupdate">[insert time]</span>. Read about changes <a href="./meta/index.html">here</a>.</p>
+    </article>
+
+<script src="./meta/main.js"></script>
+<script>
+fetch("./meta/prompts.json")
+.then((response) => response.json())
+.then((prompts) => {
+    current.index = getIndex(prompts, current.date)
+    current.prompt = prompts[current.index][1]
+    
+    promptCurrent = document.getElementById("p_current")
+    promptCurrent.innerHTML = `
+        <a href="./entries/?${prompts[current.index][0]}">
+            ${current.prompt}
+            <span>${current.dateTxt}</span>
+        </a>
+    ` 
+})
+
+fetch("./members/members.json")
+.then((response) => response.json())
+.then((members) => {
+  target = document.getElementById('m_widget')
+  
+  max = 6
+  console.log(max)
+  console.log(members.length)
+  console.log(members.length < max)
+  if(members.length < max) {
+    max = members.length
+  }
+  
+  for(i = members.length-1; i > members.length-max-1;i--){
+    console.log(i)
+    item = document.createElement('div')
+    item.className = "m-wrapper"
+
+    pfp = document.createElement('img')
+    if (members[i].pfp) {
+      pfp.src = members[i].pfp
+    } else {
+      pfp.src = './img/pfp.png'
+    }
+
+    username = document.createElement('h2')
+    username.innerHTML = members[i].name
+
+    link = document.createElement('a')
+    link.href = members[i].link
+    link.innerHTML = 'View Website »'
+
+    item.append(pfp)
+    item.append(username)
+    item.append(link)
+    target.append(item)
+  }
+})
+
+// get website's last update date
+// stole the code from here: https://dannarchy.com/tut/tut_002
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    var site_data = JSON.parse(this.responseText);
+
+    var date_str = site_data.info.last_updated;
+    var date_obj = new Date(date_str);
+    date_mod=(new Date().getTime()- date_obj.getTime())/1000
+
+    // should probably change this
+    if (date_mod<60){date_mod=Math.floor(date_mod); if(date_mod===1){date_mod+=" second ago"}else{date_mod+=" seconds ago"}}
+    if (date_mod<3600){date_mod=Math.floor(date_mod/60);if(date_mod===1){date_mod+=" minute ago"}else{date_mod+=" minutes ago"}}
+    if (date_mod<86400){date_mod=Math.floor(date_mod/3600);if(date_mod===1){date_mod+=" hour ago"}else{date_mod+=" hours ago"}}
+    if (date_mod<31540000){date_mod=Math.floor(date_mod/86400);if(date_mod===1){date_mod+=" day ago"}else{date_mod+=" days ago"}}
+    if (date_mod>31540000){date_mod=Math.floor(date_mod/3.154e+10);if(date_mod===1){date_mod+=" year ago"}else{date_mod+=" years ago"}}
+
+    e=document.getElementById("lastupdate")
+    e.title = date_obj;
+    e.innerHTML = date_mod;
+    }
+};
+xhttp.open("GET", "https://weirdscifi.ratiosemper.com/neocities.php?sitename=drawin-club", true);
+xhttp.send();
+</script>
+</body>
+</html>

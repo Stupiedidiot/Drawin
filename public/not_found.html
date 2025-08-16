@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./meta/main.css">
+    <title>Not Found | Drawin</title>
+</head>
+<body>
+
+    <article class="main-content" style="min-height: 90vh;">
+        <h1>Not Found</h1>
+        <p>The page you are trying to access appears to be missing.</p>
+    </article>
+
+<script>
+    relativePath = "./";
+    urlPath = window.location.pathname.split('/');
+    if(urlPath.length > 2){for(i=0;i<urlPath.length;i++){relativePath+="../"}}
+    
+    if (!urlPath.includes("not_found")){
+        window.location.replace(relativePath + "not_found");
+    }
+</script>
+<script src="./meta/main.js"></script>
+</body>
+</html>

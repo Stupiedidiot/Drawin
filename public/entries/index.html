@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../meta/main.css">
+    <title>Entries | Drawin</title>
+<style>
+#c_widgetTitle {display: none;}
+#c_message { font-size: 0.9rem; }
+#c_submitButton { margin-bottom: 0.5rem; }
+.c-comment { border: 1px solid var(--form-border); }
+
+select { width: 4.9rem; }
+#prompt_nav {
+    margin-top: 2rem;
+    border-top: 2px dashed lightgray;
+    padding-top: 1.5rem;
+}
+</style>
+</head>
+<body>
+    <article class="main-content" style="min-height: 90vh;">
+        <h1>Entries for <span id="p_date"></span></h1>
+        <h2>Prompt: <span  id="p_txt"></span></h2>
+        <div id="c_widget"></div>
+        <div id="prompt_nav">
+            <p>This page is made possible with <a href="https://virtualobserver.moe/ayano/comment-widget">Ayano's Comment Widget</a>.</p>
+            <label for="p_other">See Other Prompts</label>
+            <select name="p_other" id="p_other" onchange="switchEntry()"></select>
+        </div>
+    </article>
+
+<script src="./../meta/main.js"></script>
+<script src="./entries.js"></script>
+</body>
+</html>
