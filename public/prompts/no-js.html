@@ -1,0 +1,21 @@
+---
+layout: default
+---
+
+<article class="main-content" style="min-height: 100vh;">
+    <h1>Drawin Prompts</h1>
+    <p>
+        This is an alternative list for people who have javascript disabled. <br>
+        As stated in the <a href="/rules.html">rules</a> Drawing future prompts, although not recommend, permitted.
+    </p>
+    
+    <div id="p_previous">
+        <ul>
+            {%- for item in site.data.prompts -%}
+                <a href="./../entries/?{{item[0]}}">
+                    <li><span>20{{item[0]}} » </span> {{item[1]}}</li>
+                </a>
+            {%- endfor -%}
+        </ul>
+    </div>
+</article>
