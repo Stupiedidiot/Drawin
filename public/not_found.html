@@ -1,25 +1,18 @@
 ---
-permalink: /404.html
-layout: page
+permalink: /not_found.html
+layout: default
 ---
+<article class="main-content" style="min-height: 90vh;">
+    <h1>Not Found</h1>
+    <p>The page you are trying to access appears to be missing.</p>
+</article>
 
-<style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
-
-<div class="container">
-  <h1>404</h1>
-
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+<script>
+    relativePath = "./";
+    urlPath = window.location.pathname.split('/');
+    if(urlPath.length > 2){for(i=0;i<urlPath.length;i++){relativePath+="../"}}
+    
+    if (!urlPath.includes("not_found")){
+        window.location.replace(relativePath + "not_found");
+    }
+</script>
