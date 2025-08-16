@@ -1,0 +1,16 @@
+title: Da Blog
+description: >- # this means to ignore newlines until "baseurl:"
+  Screaming into the void
+baseurl: '' # the subpath of your site, e.g. /blog
+url: "https://drawin-club.neocities.org"
+github_username:  stupiedidiot
+
+# Build settings
+source: public
+theme: minima
+plugins:
+  - jekyll-feed
+
+collections:
+  posts:
+    permalink: /:categories/:year-:month-:day-:title:output_ext
