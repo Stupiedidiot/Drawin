@@ -26,6 +26,11 @@ jobs:
         bundle install
         bundle exec jekyll build
 
+    - name: HTMLMinifier
+      uses: emepetres/html-minifier-action@v1
+      with:
+        rootDir: "_site"
+
     - name: Deploy to main neocities
       uses: bcomnes/deploy-to-neocities@v2
       with:
