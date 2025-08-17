@@ -200,8 +200,8 @@ function getComments() {
 
     // Clear input fields too
     if (s_commentsOpen) {
-        document.getElementById(`entry.${s_nameId}`).value = '';
-        document.getElementById(`entry.${s_websiteId}`).value = '';
+        // document.getElementById(`entry.${s_nameId}`).value = '';
+        // document.getElementById(`entry.${s_websiteId}`).value = '';
         document.getElementById(`entry.${s_textId}`).value = '';
         document.getElementById(`entry.${s_imageId}`).value = '';
         document.getElementById(`entry.${s_spoilerId}`).checked = false;
