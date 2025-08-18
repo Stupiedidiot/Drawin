@@ -60,3 +60,7 @@ function convDate(year,month){
   result = month + " " + year
   return result;
 }
+
+function mobileNav (state) {
+  document.getElementsByTagName('header')[0].id = state
+}
