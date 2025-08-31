@@ -1,16 +1,15 @@
 title: Drawin
-description: >- # this means to ignore newlines until "baseurl:"
-  Digital Art Club
-baseurl: '' # the subpath of your site, e.g. /blog
+description: >-
+  Digital Art Club that gives out monthly prompts that members will interpret through their illustrations.
+baseurl: ''
 url: "https://drawin-club.neocities.org"
 github_username:  stupiedidiot
 
 # Build settings
 source: public
-theme: minima
 plugins:
   - jekyll-feed
 
 collections:
   posts:
-    permalink: /:categories/:year-:month-:day-:title:output_ext
+    permalink: /:categories/:year-:title:output_ext

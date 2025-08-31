@@ -1,0 +1,21 @@
+{% assign selected = site.data.entries | where: "date", include.date | first %}
+<div class="summary db-list">
+{%- if selected.files.size > 0 -%}        
+    {%- for entry in selected.files -%}
+    {% assign date = include.date | replace: "/","" %}
+    
+    {% assign source = "https://raw.githubusercontent.com/Stupiedidiot/Drawin/refs/heads/main/entries/"
+        | append: date
+        | append: "/" 
+        | append: entry 
+    %}
+    <a href="{{source}}">
+        <img src="{{source}}" alt=""/>
+        <span>
+            {% assign max = entry.size | minus:4 %}
+            {{entry | slice: 0, max}}
+        </span>
+    </a>
+    {%- endfor -%}
+{%- endif -%}
+</div>

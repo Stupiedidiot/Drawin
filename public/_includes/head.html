@@ -1,7 +1,14 @@
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/meta/main.css">
-    {%- seo -%}
-    <meta name="keywords" content="drawin, club, neocities">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{site.description}}">
+  <meta name="keywords" content="drawin, drawin-club, club, neocities">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/meta/main.css">
+  {%- if page.title-%}
+  <title>{{ page.title }} | {{site.title}}</title>
+  {%- else-%}
+  <title>{{site.title}} | {{site.description}}</title>
+  {%- endif -%}
 </head>

@@ -1,0 +1,26 @@
+{%- if include.max -%}
+    {% assign max = include.max %}
+{%- else-%}
+    {% assign max = site.post.size %}
+{%- endif -%}
+
+<div id="blog-archive" class="{{include.class}}">
+    {%- if site.posts.size > 0 -%}        
+        {%- for post in site.posts limit:max -%}
+            <a href="{{ post.url | relative_url }}">
+                <div class="blog-item">
+                    <div class="item-title" title="{{ post.title | escape }}">{{ post.title | escape }}</div>
+                    <div class="item-date">{{ post.date | date: "%Y-%m-%d"}}</div>
+                    {%- if site.show_excerpts -%}
+                        <div class="item-desc">
+                            {{ post.excerpt }}
+                        </div>
+                    {%- endif -%}
+                    {%- if post.thumb -%}
+                        <div class="item-img"><img src="{{post.thumb}}"></div>
+                    {%- endif -%}
+                </div>
+            </a>
+        {%- endfor -%}
+    {%- endif -%}
+</div>

@@ -1,0 +1,7 @@
+{% assign selected = site.data.prompts | where: "date", include.date | first %}
+<blockquote id="p_current">
+    <a href="./entries/?25/08">
+        <span>Entries for Prompt:</span>
+        {{ selected.prompt }}
+    </a>
+</blockquote>

@@ -456,6 +456,7 @@ footer > nav > a:hover {
     header > nav > a.hidden{ display: none; }
 
     .main-content h1 {font-size: 3rem;}
+    #post_info { transform: translateY(-1.5rem); }
 }
 
 @media only screen and (max-width: 671px) {
@@ -470,6 +471,118 @@ footer > nav > a:hover {
         .open {display: none;}
         .close {display: block;}
     }
+    #post_info { transform: translateY(-1rem); }
 }
 
 @media only screen and (max-width: 410px) {#container > img { display: none;}}
+
+/*=== BLOG LIST STYLING ===*/
+/* Use these tags to hide certain elements in the blog list */
+.no-title .item-title{display:none;}
+.no-date .item-date{display:none;}
+.no-desc .item-desc{display:none;}
+.no-img .item-img{display:none;}
+
+.item-img img{display: block;}
+.item-img img[src='./']{display:none;}
+
+.item-title{grid-area:title;}
+.item-date{grid-area:date;}
+.item-desc{grid-area:desc;}
+.item-img{grid-area:img;}
+
+.window{
+    columns:2;
+    a{
+        display: block;
+        transition: 0.3s;
+        position: relative;
+        overflow: hidden;
+    }
+
+
+    .blog-item{
+        border: 2px solid black;
+        margin-bottom: 10px;
+        break-inside: avoid;
+        display:grid;
+        grid-template-areas:
+        'title'
+        'img'
+        'date'
+        'desc';
+    }
+
+    .item-title{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color: white;
+        background-color: black;
+        border-bottom: 2px solid black;
+        transition: 0.2s;
+        padding:0.5rem;
+        z-index:1;
+    }
+
+    a:hover .item-title { background-color: var(--accent-color); }
+
+    .item-date{
+        padding:0.5rem;
+        color:var(--main-color);
+        font-weight: bolder;
+    }
+
+    a:has(img:not([src="./"])) .item-date{
+        position: absolute;
+        color:white;
+        left:0.5rem;
+        bottom:0.5rem;
+    }
+
+    a:has(.item-desc > div) .item-date{padding-bottom:0;}
+    .item-desc > div{padding:0.5rem;}
+}
+
+@media only screen and (max-width: 550px) {
+    .window{columns: 1;}
+}
+
+#blog-archive, #blog-recent {user-select:none;}
+.item-title,.item-date{font-family: var(--display-font);}
+
+#post_thumb { height: 50vh; }
+#post { padding-top: 0; }
+
+time { 
+    font-family: var(--display-font);
+    font-weight: bolder;
+    font-size: 1.5rem;
+}
+
+.summary{
+    margin-bottom: 1rem;
+    > a {
+        display: block;
+        margin-bottom: 0.5rem;
+        padding: 0.5rem;
+        border: 1px solid lightgray;
+        text-transform: uppercase;
+        font-family: var(--display-font);
+        break-inside: avoid;
+    }
+    img { 
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        margin-bottom: 0.5rem;
+    }
+
+    > a:hover {
+        outline: 3px solid var(--accent-color);
+    }
+}
+
+@media only screen and (min-width: 480px) {
+    .summary{columns:2;}
+}
