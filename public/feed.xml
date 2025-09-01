@@ -1,0 +1,32 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <atom:link href="https://stupied.neocities.org/blog/feed.xml" rel="self" type="application/rss+xml"/>
+    <title>{{ site.title }}</title>
+    <link>{{ site.url }}</link>
+    <description>Announcements for Drawin</description>
+    <ttl>60</ttl>
+
+    {% for post in site.posts %}
+      <item>
+          <title>{{ post.title }}</title>
+          <link>{{ post.url | relative_url | prepend: site.url }}</link>
+
+          <description>
+              {%- if post.thumb -%}
+              <img src="{{post.thumb | relative_url | prepend: site.url }}" style="max-width:100%;"/>
+              {%- endif -%}
+              {{ post.content | escape }}
+              <a href="{{ post.url | prepend: site.url }}">Click to View »</a>
+          </description>
+          
+          <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+          <guid>{{ post.url | prepend: site.url }}</guid>
+      </item>
+    {% endfor %}
+
+  </channel>
+</rss>
