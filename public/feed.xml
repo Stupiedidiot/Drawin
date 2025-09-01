@@ -17,10 +17,9 @@ layout: null
 
           <description>
               {%- if post.thumb -%}
-              <img src="{{post.thumb | relative_url | prepend: site.url }}" style="max-width:100%;"/>
+              <img src="{{ post.thumb }}" style="max-width:100%;"/>
               {%- endif -%}
               {{ post.content | escape }}
-              <a href="{{ post.url | prepend: site.url }}">Click to View »</a>
           </description>
           
           <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
