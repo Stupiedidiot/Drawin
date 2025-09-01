@@ -3,13 +3,10 @@ description: >-
   Digital Art Club that gives out monthly prompts that members will interpret through their illustrations.
 baseurl: ''
 url: "https://drawin-club.neocities.org"
-github_username:  stupiedidiot
 
 # Build settings
 source: public
-plugins:
-  - jekyll-feed
 
 collections:
   posts:
-    permalink: /:categories/:year-:title:output_ext
+    permalink: /post/:categories/:year-:title:output_ext
