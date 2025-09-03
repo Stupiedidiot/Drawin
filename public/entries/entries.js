@@ -622,7 +622,7 @@ fetch("./../meta/prompts.json")
         item = document.createElement('option')
         item.innerHTML = `20${prompts[i][0]} - ${prompts[i][1]}`
         item.value = prompts[i][0]
-        if (prompts[i][0]===selected.date){item.selected=""}
+        if (prompts[i][0] === selected.date){item.setAttribute("selected","")}
         target.append(item)
 	}
 })

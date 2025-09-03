@@ -13,7 +13,7 @@ title: Prompts
     <div id="p_previous">
         <ul>
             {%- for item in site.data.prompts -%}
-                <a href="./../entries/?{{item[0]}}">
+                <a href="./../entries/?{{item.date}}">
                     <li><span>20{{item.date}} » </span> {{item.prompt}}</li>
                 </a>
             {%- endfor -%}
