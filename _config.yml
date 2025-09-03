@@ -4,6 +4,14 @@ description: >-
 baseurl: ''
 url: "https://drawin-club.neocities.org"
 
+plugins:
+  - jekyll-minifier
+
+jekyll-minifier:
+  compress_css: false
+  compress_javascript: false
+  exclude: feed.xml
+
 # Build settings
 source: public
 
