@@ -59,16 +59,16 @@ const v_formHtml = `
 // Insert main HTML to page
 document.getElementById('c_widget').innerHTML = v_mainHtml;
 const c_form = document.getElementById('c_form');
-if (s_commentsOpen) {c_form.innerHTML = v_formHtml} 
-else {c_form.innerHTML = s_closedCommentsText}
+if (s_commentsOpen) { c_form.innerHTML = v_formHtml }
+else { c_form.innerHTML = s_closedCommentsText }
 
 // Initialize misc things
 const c_container = document.getElementById('c_container');
 
 // The fake button is just a dummy placeholder for when comments are closed
 let c_submitButton;
-if (s_commentsOpen) {c_submitButton = document.getElementById('c_submitButton')}
-else {c_submitButton = document.createElement('button')}
+if (s_commentsOpen) { c_submitButton = document.getElementById('c_submitButton') }
+else { c_submitButton = document.createElement('button') }
 
 // Add the invisible iFrame to the document for catching the default Google Forms submisson page
 let v_submitted = false;
@@ -98,7 +98,7 @@ function getComments() {
         document.getElementById(`entry.${s_textId}`).value = '';
         document.getElementById(`inputOptions`).value = '';
     }
-        
+
     c_submitButton.disabled = false // Now that everything is done, re-enable the submit button
 }
 
