@@ -456,7 +456,6 @@ footer > nav > a:hover {
     header > nav > a.hidden{ display: none; }
 
     .main-content h1 {font-size: 3rem;}
-    #post_info { transform: translateY(-1.5rem); }
 }
 
 @media only screen and (max-width: 671px) {
@@ -471,7 +470,6 @@ footer > nav > a:hover {
         .open {display: none;}
         .close {display: block;}
     }
-    #post_info { transform: translateY(-1rem); }
 }
 
 @media only screen and (max-width: 410px) {#container > img { display: none;}}
@@ -550,9 +548,6 @@ footer > nav > a:hover {
 
 #blog-archive, #blog-recent {user-select:none;}
 .item-title,.item-date{font-family: var(--display-font);}
-
-#post_thumb { height: 50vh; }
-#post { padding-top: 0; }
 
 time { 
     font-family: var(--display-font);
